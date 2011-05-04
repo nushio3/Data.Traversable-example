@@ -1,6 +1,4 @@
 {-# OPTIONS -Wall #-}
-module Tree (Tree(..)) where
-
 import Control.Applicative
 import Data.Foldable
 import Data.Functor
@@ -22,5 +20,4 @@ instance Traversable Tree where
   traverse _ Empty               = pure Empty
   traverse f (Node x left right) = 
     Node <$> f x <*> traverse f left <*> traverse f right
-  
-  
+
