@@ -2,6 +2,7 @@
 import Control.Applicative
 import Data.Foldable
 import Data.Functor
+import Data.Monoid
 import Data.Traversable
 import Prelude hiding (mapM,sequence,fmap,foldr, foldl,foldl1,foldr1)
 
@@ -18,6 +19,6 @@ instance Foldable Tree where
 
 instance Traversable Tree where
   traverse _ Empty               = pure Empty
-  traverse f (Node x left right) = 
-    Node <$> f x <*> traverse f left <*> traverse f right
+  traverse up (Node x left right) = 
+    Node <$> up x <*> traverse up left <*> traverse up right
 
